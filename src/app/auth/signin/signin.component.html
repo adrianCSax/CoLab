@@ -1,0 +1,46 @@
+<logo></logo>
+<div>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div *ngIf="!isLoading">
+    <form (submit)="onSignin()" [formGroup]="signForm" class="start-container">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input type="text" matInput formControlName="tagnameFormControl"
+                placeholder="example">
+                <mat-error *ngIf="!signForm.get('tagnameFormControl')?.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+        </mat-form-field>
+
+        <mat-form-field  appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="emailFormControl"
+                    placeholder="Ex. example@gmail.com">
+            <mat-error *ngIf="signForm.get('emailFormControl')?.hasError('email') && !signForm.get('emailFormControl')?.hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="signForm.get('emailFormControl')?.hasError('required')">
+                Email is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field  appearance="fill">
+            <mat-label>password</mat-label>
+            <input type="password" matInput formControlName="passwordFormControl"
+                    placeholder="password">
+            <mat-error *ngIf="!signForm.get('passwordFormControl')?.hasError('required')">
+                Please enter a password
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field  appearance="fill">
+            <mat-label>repeat password</mat-label>
+            <input type="password" matInput formControlName="repeatPasswordFormControl"
+                    placeholder="password">
+            <mat-error *ngIf="!signForm.get('repeatPasswordFormControl')?.hasError('required')">
+                Please enter a password
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button type="submit">SignIn</button>
+    </form>
+    </div>
+</div>
