@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'find-room',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./find-room.component.scss']
 })
 export class FindRoomComponent implements OnInit {
+
+  addFriend = new FormGroup({
+    roomName: new FormControl('', [Validators.required]),
+  });
 
   constructor() { }
 

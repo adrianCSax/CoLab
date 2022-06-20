@@ -20,6 +20,7 @@ import { LogoComponent } from './logo/logo.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth_interceptor';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AuthInterceptor } from './auth/auth_interceptor';
     FindRoomComponent,
     FriendsListComponent,
     LabComponent,
-    LogoComponent
+    LogoComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,

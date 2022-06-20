@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import Validation from '../validation';
 
 @Component({
   selector: 'app-signin',
@@ -10,23 +11,29 @@ import { AuthService } from '../auth.service';
 export class SigninComponent implements OnInit {
 
   isLoading = false;
-
-  signForm = new FormGroup({
+  signForm: FormGroup = this.formBuilder.group({    
     tagnameFormControl: new FormControl('', [Validators.required]),
     emailFormControl: new FormControl('', [Validators.required, Validators.email]),
-    passwordFormControl: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    repeatPasswordFormControl: new FormControl('', [Validators.required, Validators.minLength(8)])
-  });
+    passwordFormControl: ['', [Validators.required, Validators.minLength(8)]],
+    repeatPasswordFormControl:  ['', [Validators.required, Validators.minLength(8)]]
+  }, {
+    validators: [Validation.match('passwordFormControl', 'repeatPasswordFormControl')]
+  } );
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private formBuilder: FormBuilder) { }
 
-  
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  get formControls() {
+    console.log()
+    return this.signForm?.controls;
   }
 
   onSignin() {
+    if (this.signForm === undefined) return;
+
     const user = this.signForm.value;
+    console.log(user);
     
     //TODO: Que cuando la contraseña no coincida informar al usuario.
     if(!this.signForm.valid && user.passwordFormControl !== user.repeatPasswordFormControl) {

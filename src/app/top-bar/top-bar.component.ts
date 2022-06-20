@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  selector: 'top-bar',
+  templateUrl: './top-bar.component.html',
+  styleUrls: ['./top-bar.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class TopBarComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
 

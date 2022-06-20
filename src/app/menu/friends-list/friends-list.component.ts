@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'friends-list',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FriendsListComponent implements OnInit {
 
+  searchFriend = new FormGroup({
+    friendtag: new FormControl('', [Validators.required]),
+  });
+
   constructor() { }
+  
 
   ngOnInit(): void {
+  }
+
+  addFriend() {
+    
   }
 
 }
