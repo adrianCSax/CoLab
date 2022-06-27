@@ -1,0 +1,50 @@
+<div class="top-bar">
+    <div>
+        <p>new room name</p>
+        <h3>{{data.roomName}}</h3>
+    </div>
+    <button mat-button (click)="closePopup()">
+        <mat-icon>cancel</mat-icon>
+    </button>
+</div>
+<div class="create-room-options">
+    <section>
+        <h4>selected CoLeagues</h4>
+        <mat-form-field class="selected-friends">
+            <mat-chip-list aria-label="Selected Friends">
+                <mat-chip *ngFor="let selected of selectedFriends">
+                    {{selected.tagname}}
+                    <button matChipRemove (click)="removeSelectedFriend(selected)">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip>
+            </mat-chip-list>
+        </mat-form-field>
+        <friend-sublist [options]="getFriendListOptions()" (selectedFriend)="onSelectedFriend($event)" [unselectedFriend]="unselectedFriend"></friend-sublist>
+    </section>
+    <section>
+        <h4>Tags</h4>
+        <mat-form-field class="tag-list" appearance="fill">
+            <mat-chip-list #chipList aria-label="Tag selection">
+              <mat-chip *ngFor="let tag of tags">
+                {{tag}}
+                <button matChipRemove (click)="removeTag(tag)">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="New tag..."
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="addTag($event)">
+            </mat-chip-list>
+          </mat-form-field>
+          <h4>Description</h4>
+          <mat-form-field appearance="fill"  class="textarea-container">
+            <textarea [formControl]="description" matInput></textarea>
+          </mat-form-field>
+    </section>
+</div>
+<div class="popup-last-button">
+    <button mat-button (click)="createRoom()">Create</button>
+</div>

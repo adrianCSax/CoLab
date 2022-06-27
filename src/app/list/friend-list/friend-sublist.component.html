@@ -1,0 +1,25 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div *ngIf="!isLoading">
+<mat-action-list *ngIf="!options.snap">
+  <mat-list-item *ngFor="let friend of friends; index as index">
+    <p matLine>{{ friend.tagname }}</p>
+    <button class="delete-button" *ngIf="options.deleteButton" mat-raised-button (click)="deleteFriend(friend.tagname)">
+      <mat-icon>cancel</mat-icon>
+    </button>
+    <button class="add-button" *ngIf="options.addButton" mat-raised-button (click)="addFriendToParentList(friend.tagname, index)">
+      <mat-icon>add_round</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-action-list>
+<mat-action-list *ngIf="options.snap">
+  <mat-list-item  *ngFor="let friend of friendsSnap; index as index">
+    <p matLine>{{ friend.tagname }}</p>
+    <button class="delete-button" *ngIf="options.deleteButton" mat-raised-button (click)="deleteFriend(friend.tagname)">
+      <mat-icon>cancel</mat-icon>
+    </button>
+    <button class="add-button" *ngIf="options.addButton" mat-raised-button (click)="addFriendToParentList(friend.tagname, index)">
+      <mat-icon>add_round</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-action-list>
+</div>

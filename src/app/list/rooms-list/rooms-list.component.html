@@ -1,0 +1,22 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div *ngIf="!isLoading">
+    <mat-action-list>
+    <mat-list-item class="room-item" *ngFor="let room of rooms; index as index">
+        <p matLine>{{ room.name }}</p>
+        <div class="button-group">
+            <button class="add-button" mat-button (click)="joinRoom(room)" >
+                <mat-icon>add_circle</mat-icon>
+            </button>
+            <button class="add-button" mat-button (click)="openInfoPopup(room)" >
+                <mat-icon>info</mat-icon>
+            </button>
+            <button class="add-button" *ngIf="room.admin === getCurrentUser()" mat-button (click)="onEditRoom(room)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button class="add-button" *ngIf="room.admin === getCurrentUser()" mat-button (click)="onDeleteRoom(room)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </mat-list-item>
+    </mat-action-list>
+</div>

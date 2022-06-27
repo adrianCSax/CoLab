@@ -11,6 +11,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
 import { MenuComponent } from './menu/menu.component';
 import { CreateRoomComponent } from './menu/create-room/create-room.component';
 import { FindRoomComponent } from './menu/find-room/find-room.component';
@@ -21,6 +22,15 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auth/auth_interceptor';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { RoomCreationPopupComponent } from './popups/room-creation-popup/room-creation-popup.component';
+import { FriendSublistComponent } from './list/friend-list/friend-sublist.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { RoomsListComponent } from './list/rooms-list/rooms-list.component';
+import { RoomInfoPopupComponent } from './popups/room-info-popup/room-info-popup.component';
+import { RoomEditPopupComponent } from './popups/room-edit-popup/room-edit-popup.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +43,12 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     FriendsListComponent,
     LabComponent,
     LogoComponent,
-    TopBarComponent
+    TopBarComponent,
+    RoomCreationPopupComponent,
+    FriendSublistComponent,
+    RoomsListComponent,
+    RoomInfoPopupComponent,
+    RoomEditPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +61,12 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     RouterModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

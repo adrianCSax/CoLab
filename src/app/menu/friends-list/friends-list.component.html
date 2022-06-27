@@ -1,13 +1,23 @@
-<h4>My CoLeages</h4>
-
-<form [formGroup]="searchFriend" (submit)="addFriend()">
-    <mat-form-field  appearance="fill">
-        <mat-label>add a friend</mat-label>
-        <input type="text" matInput formControlName="friendtag"
-                placeholder="tagname">
-        <mat-error *ngIf="searchFriend.get('friendtag')?.hasError('required')">
-            Please enter a friend tagname
-        </mat-error>
-    </mat-form-field>
-    <button mat-raised-button type="submit">Search</button>
-</form>
+<div>
+    <h4>CoLeagues Pane</h4>
+</div>
+<div class="coleages-container">
+    <div>
+        <p class="subtitle">Add new CoLeague</p>
+        <form [formGroup]="searchFriend" (submit)="addFriend()" class="search-container">
+            <mat-form-field  appearance="fill">
+                <mat-label>add a friend</mat-label>
+                <input type="text" matInput formControlName="friendtag"
+                        placeholder="tagname">
+                <mat-error *ngIf="searchFriend.get('friendtag')?.hasError('required')">
+                    Please enter a coLeague tagname
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button type="submit">Add</button>
+        </form>
+    </div>
+    <div class="friend-container">
+        <p class="subtitle">My CoLeagues</p>
+        <friend-sublist [options]="getFriendListOptions()"></friend-sublist>
+    </div>
+</div>
